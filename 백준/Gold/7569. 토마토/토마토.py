@@ -4,21 +4,6 @@ from collections import deque
 # 열 행
 m, n, h = map(int, stdin.readline().rstrip().split())
 
-'''
-[h][n][m]
-h[
-    n[
-        m[1 0 1 1 0]
-        m[1 0 1 1 0]
-        m[1 0 1 1 0]
-    ]
-    
-    [
-        [], [], []
-    ]
-    
-]
-'''
 lists = []
 for _ in range(h):
     data = []
@@ -27,9 +12,6 @@ for _ in range(h):
         data.append(tomatos)
     lists.append(data)
     
-# print(lists)
-# 없으면 -1 익었으면 1 익지 않았으면 0
-# 상하좌우 위 아래
 direction = [(0, -1, 0),(0, 1, 0),(0, 0, -1),(0, 0, 1),(-1, 0, 0),(1,0,0)]
 
 def bfs(is_1):
@@ -56,8 +38,8 @@ for i in range(h):
         for k in range(m):
             if lists[i][j][k] == 1: # 익은 거 있을 때만
                 is_1.append((i,j,k))
-bfs(is_1)
 
+bfs(is_1)
 
 maxi = -1
 mini = 100000

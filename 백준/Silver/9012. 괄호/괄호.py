@@ -1,14 +1,14 @@
 # https://www.acmicpc.net/problem/9012
-# 3시 10분
+# 3시 10분~3시 21분
 from sys import stdin
 
 n = int(stdin.readline())
-res = ['YES'] * n
 for i in range(n):
     st = (stdin.readline().strip())
-    
+    res = 'YES'
     if st.count('(') != st.count(')'):
-        res[i] = 'NO'
+        res ='NO'
+        print(res)
         continue
     cnt = 0
     for s in st:
@@ -17,8 +17,6 @@ for i in range(n):
         else:
             cnt -= 1
             if cnt < 0:
-                res[i] = 'NO'
+                res = 'NO'
                 continue
-            
-for r in res:
-    print(r)
+    print(res)

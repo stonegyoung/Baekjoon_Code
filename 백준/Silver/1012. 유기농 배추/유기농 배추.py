@@ -14,9 +14,6 @@ def bfs(graph, now_x, now_y):
                     graph[x][y] = 0
                     queue.append((x,y))
 
-    
-    pass
-
 def find_res(n, m):
     res = 0
     for i in range(n):

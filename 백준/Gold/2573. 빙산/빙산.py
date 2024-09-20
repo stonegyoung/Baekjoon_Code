@@ -1,9 +1,3 @@
-# 10시 18분~10tl30
-# 10시 45분 11시 35qns
-
-# 상하좌우 -> 몇인지 넣을 리스트
-# 두 덩어리 이상이 되는 지 확인 분리 되는 지 확인 안되면 0 -> bfs
-
 import sys
 from collections import deque
 input = sys.stdin.readline
@@ -61,11 +55,10 @@ while graph != [[0]*m for _ in range(n)]:
     visited = [[True]*m for _ in range(n)]
     
     res = 0
-    for i in range(n):
-        for j in range(m):
-            if visited[i][j]==True and graph[i][j]!=0:
-                dfs(graph, visited, i,j) 
-                res += 1
+    for i, j in nonzero:
+        if visited[i][j]==True and graph[i][j]!=0:
+            dfs(graph, visited, i,j) 
+            res += 1
                 # print(i, j)
     if res > 1:
         result = cnt

@@ -7,12 +7,10 @@ input = sys.stdin.readline
 
 n = int(input())
 
-dp = [[0]* 10] * (n+1)
-dp[1] = [1 for i in range(10)] # 0~9가 나오는 수 # 0은 한 번
-for i in range(2, n+1):
-    lists = []
-    for j in range(10):
-        lists.append(sum(dp[i-1][:j+1]), )
-    dp[i] = lists
+dp = [1] * 10 # 0~9가 나오는 수 # 0은 한 번 1은 두 번
+for _ in range(2, n+1):
+    for i in range(1, 10): # 맨 뒷자리에 i가 몇 번 나올 수 있나
+        dp[i] = dp[i] + dp[i-1]
     
-print(sum(dp[n])%10007)
+# print(dp)
+print(sum(dp)%10007)

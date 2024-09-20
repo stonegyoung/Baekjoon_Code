@@ -6,6 +6,7 @@
 # 원소 하나 추가 add
 # 여러 원소 추가 update
 # 특정값 제거 remove
+# 기존 세트 비우기 clear
 
 import sys
 input = sys.stdin.readline
@@ -20,13 +21,13 @@ for _ in range(m):
         if lists[0] == 'all':
             S = set([i for i in range(1, 21)])
         elif lists[0] == 'empty':
-            S = set()
+            S.clear()
     else:
         x = int(lists[1])
         if lists[0] == 'add':
             S.add(x)
         elif lists[0] == 'remove':
-            if x in S:
+            if x in S: # 없는 데 제거하려고 하면 키 에러
                 S.remove(x)
         elif lists[0] == 'check':
             if x in S:

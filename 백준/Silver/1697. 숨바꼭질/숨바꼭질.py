@@ -22,8 +22,6 @@ def find_syster(n, k):
                 if visited[x]==0:    
                     visited[x] = visited[v]+1
                     queue.append(x)
-                elif visited[x] > visited[v]+1:
-                    visited[x] = visited[v]+1
                     
                     
 print(find_syster(n,k))

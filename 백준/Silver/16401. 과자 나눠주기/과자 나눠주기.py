@@ -8,8 +8,6 @@ snack = list(map(int, input().split()))
 def bs(start, end):
     while start<=end:
         mid = (start+end)//2
-        if end != 0 and mid == 0:
-            mid = 1
         # 자르는 수를 mid로
         
         cnt = 0

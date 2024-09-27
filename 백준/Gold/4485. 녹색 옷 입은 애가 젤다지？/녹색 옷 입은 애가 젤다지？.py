@@ -16,9 +16,6 @@ def dijkstra(graph, visited, x,y):
             y = nowy + dy
             
             if 0<=x<n and 0<=y<n:
-                if visited[x][y] < cost + graph[x][y]:
-                    continue
-                
                 costs = cost + graph[x][y]
                 if visited[x][y] > costs:
                     visited[x][y] = costs

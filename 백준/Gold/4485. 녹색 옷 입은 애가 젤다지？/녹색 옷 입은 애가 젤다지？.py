@@ -1,28 +1,9 @@
 # 9시 58분
 import sys
-from collections import deque
 import heapq
 input = sys.stdin.readline
 INF = int(1e9)
 directions = [(-1,0), (1,0), (0,-1), (0,1)]
-def bfs(graph, visited, x,y):
-    queue = deque([(x,y)])
-    visited[x][y] = graph[x][y]
-    
-    while queue:
-        nowx, nowy = queue.popleft()
-        for dx, dy in directions:
-            x = nowx + dx
-            y = nowy + dy
-            
-            if 0<=x<n and 0<=y<n:
-                if visited[x][y]==0:
-                    visited[x][y] = visited[nowx][nowy] + graph[x][y]
-                    queue.append((x,y))
-                else:
-                    if visited[x][y] > visited[nowx][nowy] + graph[x][y]:
-                        visited[x][y] = visited[nowx][nowy] + graph[x][y]
-                        queue.append((x,y))
     
 def dijkstra(graph, visited, x,y):
     q = []

@@ -2,7 +2,7 @@
 import sys
 input = sys.stdin.readline
 
-def bt(idx, letter, cnt):
+def bt(idx, letter):
     if idx >= m:
         result.add(letter)
         return
@@ -10,7 +10,7 @@ def bt(idx, letter, cnt):
     for i in nlist:
         if check(cnt, i):
             cnt[i] -= 1
-            bt(idx+1, letter+ f'{i} ', cnt)
+            bt(idx+1, letter+ f'{i} ')
             cnt[i] += 1
             
             
@@ -22,7 +22,6 @@ def check(cnt, i):
 
 n, m = map(int, input().split())
 nlist = list(map(int, input().split()))
-nlist.sort()
 
 cnt = {}
 for i in nlist:
@@ -30,7 +29,7 @@ for i in nlist:
 
     
 result = set()
-bt(0, '', cnt)
+bt(0, '')
 
 a = []
 for res in result:

@@ -1,11 +1,11 @@
-# 9시 51분
+# 9시 51분~10시 11분
 # 다익
 import sys
 import heapq
 input = sys.stdin.readline
 INF = int(1e9)
 
-def dijkstra(start):
+def dijkstra(start, distance, graph):
     q = []
     distance[start] = 0
     heapq.heappush(q, (distance[start], start))
@@ -24,23 +24,21 @@ def dijkstra(start):
 n, m, x = map(int, input().split())
 
 # x번으로 갔다가 오기
-graph = [[] for _ in range(n+1)]
+come = [[] for _ in range(n+1)]
+go = [[] for _ in range(n+1)]
+come_distance = [INF] *(n+1)
+go_distance = [INF] *(n+1)
 
 for _ in range(m):
     s, e, t = map(int, input().split())
-    graph[s].append((t,e)) # time, node
+    come[s].append((t,e)) # time, node
+    go[e].append((t,s))
     
-# print(graph)
-dd = []
-for i in range(1,n+1):
-    distance = [INF for _ in range(n+1)]
-    dijkstra(i)
-    dd.append(distance)
-    
-res = [0] + [i for i in dd[x-1][1:]]
+# print(come)
+dijkstra(x, come_distance, come)
+dijkstra(x, go_distance, go)
+
+maxi = -1
 for i in range(1, n+1):
-    if i == x:
-        pass
-    res[i] += dd[i-1][x]
-    
-print(max(res))
+    maxi = max(maxi, come_distance[i]+go_distance[i])
+print(maxi)

@@ -9,9 +9,10 @@ def dfs(start, graph, visited):
     stack = [start]
     while stack:
         node = stack.pop()
-        if visited[node]==0:
-            visited[node] = cnt
-            cnt += 1
+        if visited[node]: # 이미 방문했으면 패스
+            continue
+        visited[node] = cnt
+        cnt += 1
         for n in graph[node]:
             if visited[n] == 0:
                 stack.append(n)

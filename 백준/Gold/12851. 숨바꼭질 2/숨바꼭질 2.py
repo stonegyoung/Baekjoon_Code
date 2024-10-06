@@ -19,8 +19,6 @@ def bfs(start, end):
                 else:
                     if visited[v]+1 == visited[x] and visited[v] != -1: # 같으면
                         cnt[x] += cnt[v]
-                    elif visited[v]+1 < visited[x] and visited[v] != -1:
-                        cnt[x] = 1
                     
 n, m = map(int, input().split())
 if n >= m:

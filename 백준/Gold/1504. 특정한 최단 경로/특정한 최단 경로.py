@@ -8,6 +8,7 @@ INF = int(1e9)
 def dijkstra(start, end, graph, distance):
     q = []
     heapq.heappush(q, (0, start))
+    distance[start] = 0
     
     while q:
         cost, node = heapq.heappop(q)
@@ -46,8 +47,6 @@ v1ton = min_distance(v1, n)
 res = min(
         (tov1 + v1tov2 + v2ton), # 1 -> v1 -> v2 -> n
         (tov2 + v2tov1 + v1ton), # 1 -> v2 -> v1 -> n
-        (tov1 +v1tov2 + v2tov1 + v1ton), # 1 -> v1 -> v2 -> v1 -> n
-        (tov2 + v2tov1 + v1tov2 + v2ton) # 1 -> v2 -> v1 -> v2 -> n
     )
 if res >= INF:
     print(-1)

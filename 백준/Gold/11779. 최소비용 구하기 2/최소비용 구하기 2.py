@@ -19,8 +19,6 @@ def dijkstra(start, end):
             continue
         
         for i in graph[node]: # i[0] distance i[1] node
-            if c > distance[i[1]]:
-                continue
             cost = c + i[0]
             if cost < distance[i[1]]:
                 distance[i[1]] = cost

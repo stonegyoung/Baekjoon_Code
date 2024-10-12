@@ -16,21 +16,12 @@ def bfs(x,y):
             y = nowy+dy
             
             if 0<=x<m and 0<=y<n:
-                if graph[x][y] == 1:
                     if visited[x][y] == -1:
-                        visited[x][y] = visited[nowx][nowy]+1
+                        visited[x][y] = visited[nowx][nowy]+graph[x][y]
                         q.append((x,y))
                     else:
-                        if visited[x][y] > visited[nowx][nowy]+1:
-                            visited[x][y] = visited[nowx][nowy]+1
-                            q.append((x,y))
-                elif graph[x][y] == 0:
-                    if visited[x][y] == -1:
-                        visited[x][y] = visited[nowx][nowy]
-                        q.append((x,y))
-                    else:
-                        if visited[x][y] > visited[nowx][nowy]:
-                            visited[x][y] = visited[nowx][nowy]
+                        if visited[x][y] > visited[nowx][nowy]+graph[x][y]:
+                            visited[x][y] = visited[nowx][nowy]+graph[x][y]
                             q.append((x,y))
 graph = []
 for _ in range(m):

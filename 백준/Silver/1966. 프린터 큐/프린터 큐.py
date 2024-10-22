@@ -4,19 +4,18 @@ from collections import deque
 
 t = int(input())
 
-def cnt_max(q, imp):
+def cnt_max(lists, sortlist):
+    i = 0
     cnt = 0
-    maxi = max(q)
-    while q:
-        v = q.popleft()
-        if v[0] == maxi[0]:
-            if v[1] == m:
+    while True:
+        if lists[i][0] == sortlist[cnt][0]:
+            if lists[i][1] == m:
                 return cnt+1
             else:
                 cnt += 1
-                maxi = max(q)
         else:
-            q.append(v)    
+            lists.append((lists[i]))   
+        i += 1 
 
 for _ in range(t):
     n, m = map(int, input().split())
@@ -26,6 +25,6 @@ for _ in range(t):
         print(1)
     else:
         lists = deque([(num, i) for i, num in enumerate(imp)])
-        q = deque(lists)
-        print(cnt_max(q, imp))
-    
+        sortlist = sorted(lists, reverse=True)
+        print(cnt_max(lists, sortlist))
+        # print(sortlist)

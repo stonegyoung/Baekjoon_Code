@@ -37,9 +37,29 @@ for _ in range(n):
 
 # print(graph)
 # 벽을 부수기 전, 벽을 부수고 난 후
-visited = [[[0,0] for _ in range(m)] for _ in range(n)]
+# visited = [[[0,0] for _ in range(m)] for _ in range(n)]
+visited = [[2]*m for _ in range(n)]
 # print(visited)
 
+def bfs(startx, starty):
+    startdist = 1
+    q = deque([(startdist, startx, starty)])
+    visited[startx][starty] = 0
+    while q:
+        d, nowx, nowy = q.popleft()
+        br = visited[nowx][nowy]
+        if nowx == n-1 and nowy == m-1:
+            return d
+        for dx, dy in [(-1,0),(1,0),(0,1),(0,-1)]:
+            x = nowx + dx
+            y = nowy + dy
+            if 0<=x<n and 0<=y<m:
+                new_br = br + graph[x][y]
+                if new_br < visited[x][y]: 
+                    visited[x][y] = new_br
+                    q.append((d+1, x, y))
+    return -1
+                
 ans = bfs(0,0)
 # print(visited)
 print(ans)

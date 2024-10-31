@@ -14,15 +14,17 @@ for tup in zip(hp, happy):
         
 dp = [[0]* 100 for _ in range(len(nh)+1)]
 
-for i in range(1, len(nh)+1):
-    last = dp[i-1]
-    now = dp[i]
-    now_hp, now_happy = nh[i-1]
-    
-    for j in range(1, 100):
-        if now_hp > j:
-            now[j] = last[j] 
-        else:
-            now[j] = max(last[j], last[j-now_hp] + now_happy) # 안넣, 넣
-            
+def ns():
+    for i in range(1, len(nh)+1):
+        last = dp[i-1]
+        now = dp[i]
+        now_hp, now_happy = nh[i-1]
+        
+        for j in range(1, 100):
+            if now_hp > j:
+                now[j] = last[j] 
+            else:
+                now[j] = max(last[j], last[j-now_hp] + now_happy) # 안넣, 넣
+
+ns()        
 print(dp[-1][99])

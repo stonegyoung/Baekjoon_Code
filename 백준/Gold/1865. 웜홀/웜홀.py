@@ -1,42 +1,34 @@
-# 1시 7분
-# 벨만
 import sys
+inf = 10001
 input = sys.stdin.readline
-INF = int(1e9)
-def bf(start, dist):
-    for s in start:
-        dist[s] = 0
-        for i in range(n):
-            for now in range(1, n+1):
-                for nextn, cost in edges[now]:
-                    if dist[now] != INF:
-                        if dist[nextn] > dist[now]+cost:
-                            if i == n-1:
-                                return True
-                            dist[nextn] = dist[now]+cost
-                        
-    return False
-
-            
 
 tc = int(input())
 
+def bellman_ford(start):
+    dist[start] = 0
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            for nxt, time in graph[j]:
+                if dist[nxt] > dist[j] + time:
+                    dist[nxt] = dist[j] + time
+                    if i == n:
+                        return True
+    return False
+
+
 for _ in range(tc):
-    start = []
     n, m, w = map(int, input().split())
-    edges = [[]*(n+1) for _ in range(n+1)]
-    for _ in range(m):
-        S, E, T = map(int, input().split())
-        edges[S].append((E,T))
-        edges[E].append((S,T))
-    for _ in range(w):
-        S, E, T = map(int, input().split())
-        edges[S].append((E,-T))
-        start.append(S)
-    distance = [INF] * (n+1)
-    if bf(start, distance):
+    graph = [[] for i in range(n+1)]
+    dist = [inf for i in range(n+1)]
+    for i in range(m):
+        s, e, t = map(int, input().split())
+        graph[s].append([e, t])
+        graph[e].append([s, t])
+    for i in range(w):
+        s, e, t = map(int, input().split())
+        graph[s].append([e, -t])
+
+    if bellman_ford(1):
         print("YES")
     else:
-        # print(distance)
         print("NO")
-    # print(edges)

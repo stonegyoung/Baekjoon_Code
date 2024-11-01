@@ -1,5 +1,3 @@
-# 4시
-# dp dp[i] = 1 ~ i - 1까지의 원소들에서, i번째 원소보다 값이 작은것들 중, 가장 큰 dp값 + 1
 import sys
 input = sys.stdin.readline
 

@@ -11,7 +11,6 @@ try:
 except:
     pass
 for i in range(3, n+1):
-    maxi = max(dp[:i-2])
-    dp[i] = gp[i] + max(gp[i-1]+maxi, max(maxi, dp[i-2])) # 직전 거 먹었을 때/ 지지난 거 먹었을 때
+    dp[i] = max(gp[i]+gp[i-1]+dp[i-3], gp[i]+dp[i-2], dp[i-1]) # 직전 거 먹었을 때/ 지지난 거 먹었을 때/ 이번 거 안먹었을 때
 # print(dp)
 print(max(dp))    

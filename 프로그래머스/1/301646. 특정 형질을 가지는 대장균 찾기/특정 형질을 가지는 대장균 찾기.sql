@@ -1,0 +1,5 @@
+-- 코드를 작성해주세요
+# 9시 46분
+SELECT COUNT(ID) AS COUNT
+FROM ECOLI_DATA
+WHERE ((GENOTYPE & 15) | 8) IN (9, 12, 13);

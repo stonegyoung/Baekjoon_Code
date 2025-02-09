@@ -1,40 +1,40 @@
-# 8tl 55qns
 import sys
-from collections import deque
+input = sys.stdin.readline
+
+def preorder(now):
+    if now != '.':
+        print(now, end='')
+    if di[now][0] != '.':
+        preorder(di[now][0])
+    if di[now][1] != '.':
+        preorder(di[now][1])
+
+def inorder(now):
+    if di[now][0] != '.':
+        inorder(di[now][0])
+    if now != '.':
+        print(now, end='')
+    if di[now][1] != '.':
+        inorder(di[now][1])
+
+def postorder(now):
+    if di[now][0] != '.':
+        postorder(di[now][0])
+    if di[now][1] != '.':
+        postorder(di[now][1])
+    if now != '.':
+        print(now, end='')
+
 n = int(input())
-
-tree = {}
-root = ''
+di = {}
 for _ in range(n):
-    a,b,c = list(input().split())
-    tree[a] = [b,c]
+    now, l, r = input().split()
+    di[now] = [l, r]
     
-
-def pre(node):
-    print(node, end='')
-    
-    if tree[node][0] != '.':
-        pre(tree[node][0])
-    if tree[node][1] != '.':
-        pre(tree[node][1])
-            
-def post(node):
-    if tree[node][0] != '.':
-        post(tree[node][0])
-    if tree[node][1] != '.':
-        post(tree[node][1])
-    print(node, end='')
-
-def infix(node):
-    if tree[node][0] != '.':
-        infix(tree[node][0])
-    print(node, end='')
-    if tree[node][1] != '.':
-        infix(tree[node][1])
-    
-root = 'A'
-pre(root)
+preorder('A')
 print()
-infix(root)
+inorder('A')
 print()
-post(root)
+postorder('A')
+print()
+
